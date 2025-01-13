@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvMedicalReportsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medical Reports History"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp" />
+
+    <!-- Add your RecyclerView or ListView here for displaying reports -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMedicalReports"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:visibility="gone" /> <!-- Initially hidden -->
+
+    <TextView
+        android:id="@+id/tvNoReportsMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="No medical report yet"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:paddingTop="20dp"
+        android:layout_gravity="center" />
+
+</LinearLayout>

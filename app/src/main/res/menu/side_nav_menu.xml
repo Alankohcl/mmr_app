@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Patient Details -->
+    <item
+        android:id="@+id/nav_patient_details"
+        android:title="Patient Details"
+        android:icon="@drawable/ic_patient_detail" />
+
+    <!-- Medical Report -->
+    <item
+        android:id="@+id/nav_medical_report"
+        android:title="Medical Report"
+        android:icon="@drawable/ic_medical_report" />
+
+    <!-- Trendline -->
+    <item
+        android:id="@+id/nav_trendline"
+        android:title="Trendline"
+        android:icon="@drawable/ic_trendline" />
+
+    <!-- Logout -->
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_logout" />
+</menu>

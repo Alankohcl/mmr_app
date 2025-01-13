@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Medical Report"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <!-- Report ID -->
+        <TextView
+            android:id="@+id/tvReportId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Report ID:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Patient Name -->
+        <TextView
+            android:id="@+id/tvPatientName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patient Name:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Lab Assistant Name -->
+        <TextView
+            android:id="@+id/tvLabAssistantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lab Assistant Name:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Doctor Name -->
+        <TextView
+            android:id="@+id/tvDoctorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor Name:"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Remarks -->
+        <TextView
+            android:id="@+id/tvRemarks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remarks:"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Created At -->
+        <TextView
+            android:id="@+id/tvCreatedAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Created At:"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Blood Test Details -->
+        <TextView
+            android:id="@+id/tvBloodTestHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blood Test Details"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Haemoglobin Level -->
+        <TextView
+            android:id="@+id/tvHaemoglobinLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Haemoglobin Level:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Platelet Count -->
+        <TextView
+            android:id="@+id/tvPlateletCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Platelet Count:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Neutrophils Percent -->
+        <TextView
+            android:id="@+id/tvNeutrophilsPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Neutrophils Percent:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Lymphocytes Percent -->
+        <TextView
+            android:id="@+id/tvLymphocytesPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lymphocytes Percent:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Monocytes Percent -->
+        <TextView
+            android:id="@+id/tvMonocytesPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monocytes Percent:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Eosinophils Percent -->
+        <TextView
+            android:id="@+id/tvEosinophilsPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eosinophils Percent:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Basophils Percent -->
+        <TextView
+            android:id="@+id/tvBasophilsPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Basophils Percent:"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Health Metrics Details -->
+        <TextView
+            android:id="@+id/tvHealthMetricsHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Health Metrics"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Blood Pressure -->
+        <TextView
+            android:id="@+id/tvBloodPressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blood Pressure:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Body Mass Index -->
+        <TextView
+            android:id="@+id/tvBodyMassIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Body Mass Index:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Hemoglobin A1c -->
+        <TextView
+            android:id="@+id/tvHemoglobinA1c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hemoglobin A1c:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Pulse Rate -->
+        <TextView
+            android:id="@+id/tvPulseRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pulse Rate:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Random Blood Sugar -->
+        <TextView
+            android:id="@+id/tvRandomBloodSugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Random Blood Sugar:"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"/>
+
+    </LinearLayout>
+</ScrollView>
