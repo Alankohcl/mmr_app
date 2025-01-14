@@ -69,6 +69,7 @@ class MedicalReportFragment : Fragment() {
     private fun fetchMedicalReports(patientId: Int) {
         val retrofit = Retrofit.Builder()
             .baseUrl("http://172.53.231.75/Final%20Year%20Project/") //Tuah IP Address
+            //.baseUrl("http://172.55.69.142/Final%20Year%20Project/") // lestari wifi
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()
         val medicalReportService = retrofit.create(MedicalReportService::class.java)
@@ -79,36 +80,40 @@ class MedicalReportFragment : Fragment() {
                 val response = medicalReportService.getMedicalReports(patientId)
                 Log.d("MedicalReportFragment", "API Response: $response")
                 withContext(Dispatchers.Main) {
-                    if (response.isNotEmpty()) {
-                        adapter.setReports(response)
-                        // Show the RecyclerView and hide the "No medical report" message
-                        recyclerView.visibility = View.VISIBLE
-                        view?.findViewById<TextView>(R.id.tvNoReportsMessage)?.visibility = View.GONE
-                    }else{
-                        Toast.makeText(requireContext(), "No medical reports found", Toast.LENGTH_SHORT).show()
-                        // Show the "No medical report" message and hide the RecyclerView
-                        recyclerView.visibility = View.GONE
-                        view?.findViewById<TextView>(R.id.tvNoReportsMessage)?.visibility = View.VISIBLE
+                    if(isAdded){
+                        if (response.isNotEmpty()) {
+                            adapter.setReports(response)
+                            // Show the RecyclerView and hide the "No medical report" message
+                            recyclerView.visibility = View.VISIBLE
+                            view?.findViewById<TextView>(R.id.tvNoReportsMessage)?.visibility = View.GONE
+                        }else{
+                            // Show the "No medical report" message and hide the RecyclerView
+                            recyclerView.visibility = View.GONE
+                            view?.findViewById<TextView>(R.id.tvNoReportsMessage)?.visibility = View.VISIBLE
+                            Toast.makeText(requireContext(), "No medical reports found", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }catch(e: Exception){
                 Log.d("MedicalReportFragment", "API Error: ${e.message}", e)
                 withContext(Dispatchers.Main) {
-                    // Handle error (e.g., show a Toast)
-                    Toast.makeText(
-                        requireContext(),
-                        "Failed to fetch medical reports: ${e.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    if(isAdded){
+                        // Handle error (e.g., show a Toast)
+                        Toast.makeText(
+                            requireContext(),
+                            "Failed to fetch medical reports: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
-
         }
     }
 
     private fun viewReport(report: MedicalReport){
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // Replace with your actual base URL
+            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // tuah
+            //.baseUrl("http://172.55.69.142/Final%20Year%20Project/") // lestari wifi
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()
         val medicalReportService = retrofit.create(MedicalReportService::class.java)
@@ -155,7 +160,8 @@ class MedicalReportFragment : Fragment() {
             return
         }
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.53.231.75/Final%20Year%20Project/")
+            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") //tuah
+            //.baseUrl("http://172.55.69.142/Final%20Year%20Project/") // lestari wifi
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()
         val service = retrofit.create(ReportService::class.java)

@@ -1,6 +1,7 @@
 package com.example.myapplication2
 
 import android.app.AlertDialog
+import android.content.ClipData
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Toast
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 
 
 class MainActivity : AppCompatActivity(){
@@ -28,6 +30,9 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         loadFragment(MedicalReportFragment(), patientId)
 
@@ -114,39 +119,25 @@ class MainActivity : AppCompatActivity(){
             .commit()
     }
 
-    // Inflate the menu resource (Logout button)
+    // Inflate the menu resource (Toolbar menu with Home button)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        menuInflater.inflate(R.menu.toolbar_menu, menu)  // Inflate the menu
         return true
     }
 
-    // Handle menu item click (Logout action)
+    // Handle menu item click (Home button)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_logout -> {
-                // Handle logout action
-                Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
-                showLogoutConfirmationDialog()
+            R.id.btnHome -> {
+                // Handle the Home button click event
+                val intent = Intent(this, HomePageActivity::class.java) // Navigate to HomePageActivity
+                intent.putExtra("userId", userId)
+                intent.putExtra("patientId", patientId)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
-    private fun showLogoutConfirmationDialog() {
-        AlertDialog.Builder(this)
-            .setTitle("Confirm Logout")
-            .setMessage("Are you sure you want to log out?")
-            .setPositiveButton("Yes") { _, _ ->
-                logout()
-            }
-            .setNegativeButton("No", null)
-            .show()
-    }
-    // Implement logout functionality
-    private fun logout() {
-        // Implement your logout functionality here, like clearing shared preferences or navigating to the login screen
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish() // Close the current activity
-    }
+
 }

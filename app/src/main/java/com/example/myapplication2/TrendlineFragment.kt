@@ -1,95 +1,5 @@
 package com.example.myapplication2
 
-//import android.os.Bundle
-//import android.view.LayoutInflater
-//import android.view.View
-//import android.view.ViewGroup
-//import android.widget.TextView
-//import androidx.fragment.app.Fragment
-//import kotlinx.coroutines.CoroutineScope
-//import kotlinx.coroutines.Dispatchers
-//import kotlinx.coroutines.launch
-//import kotlinx.coroutines.withContext
-//import retrofit2.Retrofit
-//import retrofit2.converter.gson.GsonConverterFactory
-//import com.google.gson.GsonBuilder
-//
-//class TrendlineFragment : Fragment() {
-//
-//    private lateinit var tvBloodPressure: TextView
-//    private lateinit var tvBMI: TextView
-//    private lateinit var tvHemoglobinA1c: TextView
-//    private lateinit var tvPulseRate: TextView
-//    private lateinit var tvRandomBloodSugar: TextView
-//
-//    // Retrieve patientId from arguments
-//    private val patientId: Int by lazy {
-//        arguments?.getInt("patientId") ?: throw IllegalStateException("patientId must be provided")
-//    }
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        val view = inflater.inflate(R.layout.fragment_trendline, container, false)
-//
-//        // Initialize views
-//        tvBloodPressure = view.findViewById(R.id.tvBloodPressure)
-//        tvBMI = view.findViewById(R.id.tvBMI)
-//        tvHemoglobinA1c = view.findViewById(R.id.tvHemoglobinA1c)
-//        tvPulseRate = view.findViewById(R.id.tvPulseRate)
-//        tvRandomBloodSugar = view.findViewById(R.id.tvRandomBloodSugar)
-//
-//        // Fetch health metrics
-//        fetchHealthMetrics(patientId)
-//
-//        return view
-//    }
-//
-//    private fun fetchHealthMetrics(patientId: Int) {
-//        // Create Retrofit instance
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // Replace with your actual base URL
-//            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-//            .build()
-//
-//        // Create API service
-//        val healthMetricsService = retrofit.create(HealthMetricsService::class.java)
-//
-//        // Fetch health metrics from the backend and update the UI
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//                val response = healthMetricsService.getHealthMetrics(patientId)
-//                withContext(Dispatchers.Main) {
-//                    if (response.isNotEmpty()) {
-//                        val latestMetric = response.last() // Get the latest health metric
-//                        tvBloodPressure.text = latestMetric.blood_pressure
-//                        tvBMI.text = latestMetric.body_mass_index.toString()
-//                        tvHemoglobinA1c.text = latestMetric.hemoglobin_a1c.toString()
-//                        tvPulseRate.text = latestMetric.pulse_rate.toString()
-//                        tvRandomBloodSugar.text = latestMetric.random_blood_sugar.toString()
-//                    } else {
-//                        // Handle empty response (e.g., show a message)
-//                        tvBloodPressure.text = "N/A"
-//                        tvBMI.text = "N/A"
-//                        tvHemoglobinA1c.text = "N/A"
-//                        tvPulseRate.text = "N/A"
-//                        tvRandomBloodSugar.text = "N/A"
-//                    }
-//                }
-//            } catch (e: Exception) {
-//                withContext(Dispatchers.Main) {
-//                    // Handle error (e.g., show a Toast)
-//                    tvBloodPressure.text = "Error"
-//                    tvBMI.text = "Error"
-//                    tvHemoglobinA1c.text = "Error"
-//                    tvPulseRate.text = "Error"
-//                    tvRandomBloodSugar.text = "Error"
-//                }
-//            }
-//        }
-//    }
-//}
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -154,7 +64,8 @@ class TrendlineFragment : Fragment() {
     private fun fetchTrendlineData(selectedMetric: String) {
         // Create Retrofit instance
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // Replace with your actual base URL
+            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // tuah
+            //.baseUrl("http://172.55.69.142/Final%20Year%20Project/") // lestari wifi
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()
 

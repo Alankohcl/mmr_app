@@ -61,8 +61,8 @@ class RegisterActivity :AppCompatActivity(){
 
         //initialize Retrofit
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.53.231.75/Final%20Year%20Project/")
-//            .baseUrl("http://172.55.205.96/Final%20Year%20Project/")
+            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") //tuah
+            //.baseUrl("http://172.55.69.142/Final%20Year%20Project/") //lestari
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 

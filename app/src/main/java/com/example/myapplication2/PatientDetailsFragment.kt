@@ -61,26 +61,6 @@ class PatientDetailsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_patient_details, container, false)
 
-//        // Setup Toolbar as the ActionBar
-//        val toolbar: Toolbar = view.findViewById(R.id.toolbar)
-//        val activity = activity as? AppCompatActivity
-//        activity?.setSupportActionBar(toolbar)
-//
-//        // Enable back button in the toolbar
-//        activity?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//
-//        // Handle the back button press
-//        toolbar.setNavigationOnClickListener {
-//            handleBackPressed()
-//        }
-//
-//        // Handle the back press using OnBackPressedDispatcher
-//        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-//            override fun handleOnBackPressed() {
-//                handleBackPressed()
-//            }
-//        })
-
         // Initialize views
         tvName = view.findViewById(R.id.tvName)
         tvEmail = view.findViewById(R.id.tvEmail)
@@ -126,7 +106,8 @@ class PatientDetailsFragment : Fragment() {
 
     private fun fetchUserDetails() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // Replace with your actual base URL
+            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // tuah
+            //.baseUrl("http://172.55.69.142/Final%20Year%20Project/") // lestari wifi
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()
         val userService = retrofit.create(UserService::class.java)
@@ -215,7 +196,8 @@ class PatientDetailsFragment : Fragment() {
         val address = etAddress.text.toString()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // Replace with your actual base URL
+            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // tuah
+            //.baseUrl("http://172.55.69.142/Final%20Year%20Project/") // lestari wifi
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()
         val userService = retrofit.create(UserService::class.java)
@@ -256,6 +238,7 @@ class PatientDetailsFragment : Fragment() {
             }
         }
     }
+
     private fun showDatePicker() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -263,54 +246,12 @@ class PatientDetailsFragment : Fragment() {
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         DatePickerDialog(requireContext(), { _, selectedYear, selectedMonth, selectedDay ->
-            val formattedDate = String.format("%02d/%02d/%d", selectedDay, selectedMonth + 1, selectedYear)
+            val formattedDate =
+                String.format("%02d/%02d/%d", selectedDay, selectedMonth + 1, selectedYear)
             etDateOfBirth.setText(formattedDate)
         }, year, month, day).show()
     }
-//
-//
-//    private fun handleBackPressed() {
-//        // Custom back press logic here
-//        if (shouldExitApp()) {
-//            requireActivity().finish() // Exit the app
-//        } else {
-//            // Handle fragment-specific back logic if necessary
-//            requireActivity().supportFragmentManager.popBackStack()
-//        }
-//    }
-//
-//    private fun shouldExitApp(): Boolean {
-//        // Add your logic to determine if the app should close (e.g., if on the home fragment)
-//        return requireActivity().supportFragmentManager.backStackEntryCount == 0
-//    }
-//
-//    // Inflate the menu resource (Logout button)
-//    override fun onCreateOptionsMenu(menu: Menu,inflater: MenuInflater) {
-//        inflater.inflate(R.menu.toolbar_menu, menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//    }
-//
-//    // Handle menu item click (Logout action)
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.action_logout -> {
-//                // Handle logout action
-//                Toast.makeText(requireContext(), "Logging out...", Toast.LENGTH_SHORT).show()
-//                logout()
-//                true
-//            }
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
-//    // Implement logout functionality
-//    private fun logout() {
-//        // Implement your logout functionality here, like clearing shared preferences or navigating to the login screen
-//        val intent = Intent(requireContext(), LoginActivity::class.java)
-//        startActivity(intent)
-//        requireActivity().finish() // Close the current activity
-//    }
 }
-
 data class UserDetailsResponse(
     val success: Boolean,
     val message: String,

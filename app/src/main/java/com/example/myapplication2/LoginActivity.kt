@@ -44,8 +44,8 @@ class LoginActivity : AppCompatActivity() {
         registerButton = findViewById(R.id.buttonRegister)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.53.231.75/Final%20Year%20Project/")
-//            .baseUrl("http://172.55.205.96/Final%20Year%20Project/")
+            .baseUrl("http://172.53.231.75/Final%20Year%20Project/")//tuah
+            //.baseUrl("http://172.55.69.142/Final%20Year%20Project/") // lestari wifi
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -77,11 +77,14 @@ class LoginActivity : AppCompatActivity() {
                                     val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
                                     sharedPreferences.edit().putInt("patientId", user.user_id).apply()
                                     sharedPreferences.edit().putInt("userId", user.user_id).apply()
+                                    sharedPreferences.edit().putString("username", user.name).apply()
+
                                     Toast.makeText(this@LoginActivity, "Login Successful!", Toast.LENGTH_SHORT).show()
 
-                                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                    val intent = Intent(this@LoginActivity, LoadingScreenActivity::class.java)
                                     intent.putExtra("patientId", user.user_id)
                                     intent.putExtra("userId", user.user_id)
+                                    intent.putExtra("username", user.name)
                                     startActivity(intent)
                                     finish()
                                 }

@@ -37,7 +37,8 @@ class ReportDetailsActivity : AppCompatActivity() {
 
     private fun fetchUserDetails(report: MedicalReport) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // Replace with your actual base URL
+            .baseUrl("http://172.53.231.75/Final%20Year%20Project/") // tuah
+            //.baseUrl("http://172.55.69.142/Final%20Year%20Project/") // lestari wifi
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()
         val userService = retrofit.create(UserService::class.java)
