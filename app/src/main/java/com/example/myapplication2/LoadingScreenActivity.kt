@@ -19,10 +19,17 @@ class LoadingScreenActivity : AppCompatActivity() {
 
         // Delay for 3 seconds (3000 milliseconds) before navigating to the homepage
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, HomePageActivity::class.java)
-            intent.putExtra("userId", userId)
-            intent.putExtra("patientId", patientId)
-            intent.putExtra("username", username) // Pass username
+            val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
+            val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+            val intent = if (isLoggedIn) {
+                Intent(this, HomePageActivity::class.java).apply{
+                    intent.putExtra("userId", userId)
+                    intent.putExtra("patientId", patientId)
+                    intent.putExtra("username", username) // Pass username
+                }
+            } else {
+                Intent(this, LoginActivity::class.java)
+            }
             startActivity(intent)
             finish() // Close the loading screen activity
         }, 3000)

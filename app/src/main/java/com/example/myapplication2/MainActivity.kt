@@ -15,14 +15,37 @@ import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity(){
 
+//    private val patientId: Int by lazy {
+//        intent.getIntExtra("patientId", -1).also {
+//            if (it == -1) throw IllegalStateException("patientId must be provided")
+//        }
+//    }
+//    private val userId: Int by lazy {
+//        intent.getIntExtra("userId", -1).also {
+//            if (it == -1) throw IllegalStateException("userId must be provided")
+//        }
+//    }
+private val sharedPreferences by lazy { getSharedPreferences("AppPreferences", MODE_PRIVATE) }
+
     private val patientId: Int by lazy {
-        intent.getIntExtra("patientId", -1).also {
-            if (it == -1) throw IllegalStateException("patientId must be provided")
+        sharedPreferences.getInt("patientId", -1).also {
+            if (it == -1) {
+                // Handle error gracefully if patientId is missing
+                Toast.makeText(this, "Patient ID is missing!", Toast.LENGTH_SHORT).show()
+                finish() // Close MainActivity or navigate back to HomePageActivity
+                throw IllegalStateException("patientId must be provided")
+            }
         }
     }
+
     private val userId: Int by lazy {
-        intent.getIntExtra("userId", -1).also {
-            if (it == -1) throw IllegalStateException("userId must be provided")
+        sharedPreferences.getInt("userId", -1).also {
+            if (it == -1) {
+                // Handle error gracefully if userId is missing
+                Toast.makeText(this, "User ID is missing!", Toast.LENGTH_SHORT).show()
+                finish() // Close MainActivity or navigate back to HomePageActivity
+                throw IllegalStateException("userId must be provided")
+            }
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +59,9 @@ class MainActivity : AppCompatActivity(){
 
         loadFragment(MedicalReportFragment(), patientId)
 
-        val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
-        val userId = sharedPreferences.getInt("userId", -1)
-        val patientId = sharedPreferences.getInt("patientId", -1)
+//        val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
+//        val userId = sharedPreferences.getInt("userId", -1)
+//        val patientId = sharedPreferences.getInt("patientId", -1)
 
         // Load the default fragment
         if (savedInstanceState == null) {

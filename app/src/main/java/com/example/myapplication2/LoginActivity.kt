@@ -75,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
                                 val user = loginResponse.user
                                 if(user != null && user.role =="patient"){
                                     val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
+                                    sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
                                     sharedPreferences.edit().putInt("patientId", user.user_id).apply()
                                     sharedPreferences.edit().putInt("userId", user.user_id).apply()
                                     sharedPreferences.edit().putString("username", user.name).apply()
